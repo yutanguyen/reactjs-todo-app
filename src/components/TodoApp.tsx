@@ -3,7 +3,7 @@ import { useState } from "react";
 interface TodoItem {
   id: string;
   title: string;
-  completed: boolean;
+  isCompleted: boolean;
 }
 
 function TodoList() {
@@ -11,12 +11,12 @@ function TodoList() {
   const [newTodo, setNewTodo] = useState<string>("");
 
   const addTodo = () => {
-    if (newTodo !== "") {
+    if (newTodo.trim() !== "") {
       const newId = crypto.randomUUID();
       const newTodoItem: TodoItem = {
         id: newId,
         title: newTodo,
-        completed: false,
+        isCompleted: false,
       };
 
       setTodos([...todos, newTodoItem]);
@@ -27,7 +27,7 @@ function TodoList() {
   const handleToggleComplete = (id: string) => {
     const newTodos = todos.map((item) => {
       if (item.id === id) {
-        return { ...item, completed: !item.completed };
+        return { ...item, isCompleted: !item.isCompleted };
       }
       return item;
     });
@@ -61,7 +61,7 @@ function TodoList() {
             />
             <span
               style={{
-                textDecoration: todo.completed ? "line-through" : "none",
+                textDecoration: todo.isCompleted ? "line-through" : "none",
                 margin: 20,
               }}
             >

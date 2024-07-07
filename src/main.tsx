@@ -1,10 +1,23 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import App from './App.tsx'
-import './index.css'
+import React, { createContext } from "react";
+import ReactDOM from "react-dom/client";
+import App from "./App.tsx";
+import "./index.css";
 
-ReactDOM.createRoot(document.getElementById('root')!).render(
+// Create context
+interface Todo {
+  id: string;
+  title: string;
+  isCompleted: boolean;
+}
+
+const todoContext = createContext<Todo[]>([]);
+
+// Provider
+
+ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-)
+    <todoContext.Provider value={todo}>
+      <App />
+    </todoContext.Provider>
+  </React.StrictMode>
+);

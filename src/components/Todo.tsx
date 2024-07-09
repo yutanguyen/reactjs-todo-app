@@ -1,7 +1,7 @@
-function Todo() {
+function Todo(todo) {
   return (
     <>
-      <h1>Hello</h1>
+      <p key={todo.id}>{todo.title}</p>
     </>
   );
 }

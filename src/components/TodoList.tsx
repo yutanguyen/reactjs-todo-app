@@ -1,9 +1,15 @@
+import { useContext } from "react";
 import Todo from "./Todo";
+import TodoListContext from "../contexts/TodoListContext";
 
 function TodoList() {
+  const { todoList } = useContext(TodoListContext);
+
   return (
     <>
-      <Todo></Todo>
+      {todoList.map((todo) => (
+        <Todo item={todo}></Todo>
+      ))}
     </>
   );
 }

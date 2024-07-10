@@ -8,7 +8,7 @@ function App() {
   const { todoList, setTodoList } = useContext(TodoListContext);
   const [input, setInput] = useState("");
 
-  const handleInput = (e: any) => {
+  const handleInput = (e: HTMLInputElement) => {
     setInput(e.target.value);
   };
 

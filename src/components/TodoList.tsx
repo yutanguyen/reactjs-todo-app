@@ -5,12 +5,17 @@ import TodoListContext from "../contexts/TodoListContext";
 function TodoList() {
   const { todoList } = useContext(TodoListContext);
 
+  const todoListStyle = {
+    listStyle: "none",
+    padding: 0,
+  };
+
   return (
     <>
-      <ul>
+      <ul style={todoListStyle}>
         {todoList.map((todo) => (
-          <li>
-            <Todo key={todo.id} {...todo} />
+          <li key={todo.id}>
+            <Todo {...todo} />
           </li>
         ))}
       </ul>

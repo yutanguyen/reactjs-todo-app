@@ -5,14 +5,14 @@ import TodoListContext from "./contexts/TodoListContext";
 import { v4 as uuidv4 } from "uuid";
 
 function App() {
-  const [input, setInput] = useState("");
   const { todoList, setTodoList } = useContext(TodoListContext);
+  const [input, setInput] = useState("");
 
   const handleInput = (e: any) => {
     setInput(e.target.value);
   };
 
-  const handleAddTodo = (e: any) => {
+  const handleAddTodo = () => {
     if (input.trim() !== "") {
       setTodoList([
         ...todoList,
@@ -33,7 +33,7 @@ function App() {
         <input type="text" value={input} onChange={handleInput} />
         <button onClick={handleAddTodo}>Add</button>
       </div>
-      <TodoList></TodoList>
+      <TodoList />
     </>
   );
 }

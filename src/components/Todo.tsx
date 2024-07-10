@@ -1,7 +1,8 @@
 function Todo(todo) {
   return (
     <>
-      <p key={todo.id}>{todo.title}</p>
+      <input type="checkbox" />
+      <span>{todo.title}</span>
     </>
   );
 }

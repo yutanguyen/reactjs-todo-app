@@ -3,7 +3,11 @@ import Todo from "./Todo";
 import TodoListContext from "../contexts/TodoListContext";
 
 function TodoList() {
-  const { todoList } = useContext(TodoListContext);
+  const context = useContext(TodoListContext);
+  if (!context) {
+    throw new Error("TodoList must be used within a TodoListProvider");
+  }
+  const { todoList } = context;
 
   const todoListStyle = {
     listStyle: "none",

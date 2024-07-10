@@ -1,7 +1,12 @@
-import { useState } from "react";
+import { ReactNode, useState } from "react";
 import TodoListContext, { Todo } from "../contexts/TodoListContext";
 
-const TodoListProvider: React.FC<any> = ({ children }) => {
+// Define a type for the props, including children
+interface TodoListProviderProps {
+  children: ReactNode;
+}
+
+const TodoListProvider: React.FC<TodoListProviderProps> = ({ children }) => {
   const [todoList, setTodoList] = useState<Todo[]>([]);
 
   return (

@@ -1,16 +1,20 @@
 import { useContext } from "react";
-import TodoListContext from "../contexts/TodoListContext";
+import TodoListContext, { type Todo } from "../contexts/TodoListContext";
 
-function Todo(todo) {
-  const { todoList, setTodoList } = useContext(TodoListContext);
+function Todo(todo: Todo) {
+  const context = useContext(TodoListContext);
+  if (!context) {
+    throw new Error("TodoList must be used within a TodoListProvider");
+  }
+  const { todoList, setTodoList } = context;
 
   const handleRemove = () => {
-    setTodoList(todoList.filter((t) => t.id !== todo.id));
+    setTodoList(todoList.filter((t: Todo) => t.id !== todo.id));
   };
 
   const handleToggleTodo = () => {
     setTodoList(
-      todoList.map((t) => {
+      todoList.map((t: Todo) => {
         if (t.id === todo.id) {
           return { ...t, isCompleted: !t.isCompleted };
         }

@@ -7,6 +7,13 @@ export interface Todo {
   isCompleted: boolean;
 }
 
-const TodoListContext = createContext<Todo[] | any>([]);
+export interface TodoListContextType {
+  todoList: Todo[];
+  setTodoList: React.Dispatch<React.SetStateAction<Todo[]>>;
+}
+
+const TodoListContext = createContext<TodoListContextType | undefined>(
+  undefined
+);
 
 export default TodoListContext;
